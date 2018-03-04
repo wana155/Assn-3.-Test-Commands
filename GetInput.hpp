@@ -1,5 +1,6 @@
 
 
+
 #ifndef GetInput_hpp
 #define GetInput_hpp
 
@@ -10,13 +11,15 @@ class GetInput{
   
 private:
     std::string in;
+    bool isTest=false;
 
-    //char * in[]
 public:
    void getData();
-    std::string retrieveData();
+    std::string retrieveData(bool * a);
+     std::string retrieveData();
     
 };
 
 
 #endif /* GetInput_h */
+
