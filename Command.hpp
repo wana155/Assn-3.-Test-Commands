@@ -8,7 +8,8 @@
 #include "CommandExecute.hpp"
 
 class Command: public CommandExecute{
-public:
+public:Command();
+    Command(BaseFactory*Factory);
     void parse(std::string p);
 
 };

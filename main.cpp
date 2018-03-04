@@ -30,7 +30,7 @@ cout<<"Type 'Exit' to end program"<<endl;
       return 0;
    }   
    else{ 
-    CommandExecute *instance=new Command;
+    CommandExecute *instance=new Command(commandType2);
     instance->parse(test.retrieveData());
     cout<<endl;
     instance->execute();

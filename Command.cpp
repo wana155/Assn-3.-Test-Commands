@@ -5,6 +5,16 @@
 
 using namespace std;
 
+
+
+Command::Command(){
+    this->executeFunction= new CoShellFactory();/*by defaoult*/
+}
+Command::Command(BaseFactory*Factory){
+    this->executeFunction = Factory;
+}
+
+
 void Command::parse(std::string a){
     string::iterator it;
     int i = 0;
