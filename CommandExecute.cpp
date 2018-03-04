@@ -1,5 +1,4 @@
-
-
+ 
 /* ComandExecute Source File*/
 #include <iostream>
 #include <sys/wait.h>
@@ -7,44 +6,24 @@
 #include <unistd.h>
 #include  <stdio.h>
 #include <string>
+/*#include "BaseFactory.h"*/
 #include "CommandExecute.hpp"
+
 using namespace std;
 
-CommandExecute::CommandExecute(){}
 
-
+CommandExecute::CommandExecute(){
+    this->executeFunction= new CoShellFactory();/*by defaoult*/
+}
+CommandExecute::CommandExecute(BaseFactory*Factory){
+    this->executeFunction = Factory;
+}
 void CommandExecute::execute(){
-    /* Setting up variables for execution*/
-    string str;
-    char *tmp[50];
-    tmp[0]="sh";
-    tmp[1]="-c";
-    /* Executes comands in conatiner*/
-    for (int i=0;i<this->commads.size();i++){
-    char buffer[99];
-    str=this->commads[i];
-    size_t length=str.copy(buffer, str.size(),0);
-    buffer[length]='\0';
-    tmp[2]=buffer;
-    tmp[3]=NULL;
     
-        bool sta=true;
-        if (status==true)
-        {  sta=this->run(tmp);}
-       if (this->connector.empty()==false)
-       {/*Odered Execution based on Conectors */
-            if (this->connector[i]==';'){
-                this->status=true;}
-            else if (this->connector[i]=='&'){
-                if (sta==true){this->status=true;}
-                else{
-                    this->status=false;
-                }}
-            else if (this->connector[i]=='|'){
-                if (sta==false){this->status=true;}
-                else{
-                    this->status=false;}}
-        }}}
+    BaseExecute * Exetype=executeFunction->generateExecute(this->commads,this->connector,this->status);
+    Exetype->ExecuteC();
+  
+  }
 
 void CommandExecute::parse(std::string p)
 {}
