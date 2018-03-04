@@ -1,4 +1,5 @@
 
+
 #ifndef BaseFactory_h
 #define BaseFactory_h
 
@@ -13,7 +14,7 @@ public:
     BaseFactory(){}
     
     /* Pure Virtual Generate Function */
-    virtual BaseExecute* generateExecute(vector<string> PA, vector<char> PB, bool PC)=0;//vector<string> Comma,vector <char>Conect, bool Sta ) = 0;
+    virtual BaseExecute* generateExecute(vector<string> PA, vector<char> PB, bool PC)=0;
     
 };
 
@@ -38,4 +39,3 @@ public:
 };
 
 #endif /* BaseFactory_h */
-
