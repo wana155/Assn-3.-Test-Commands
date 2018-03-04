@@ -6,7 +6,8 @@
 #include <string.h>
 #include <sys/wait.h>
 #include "Command.hpp"
-
+#include "BaseFactory.h"
+#include "CommandExecute.hpp"
 
 
 using namespace std;
@@ -14,9 +15,13 @@ using namespace std;
 
 int main() {
  
-   
+cout<<"Type 'Exit' to end program"<<endl;   
+
+  BaseFactory* commandType1=new CoShellFactory();
+   BaseFactory* commandType2=new TestFactory();
     
    GetInput test;
+
 
  do{
     cout<<"$ ";
