@@ -6,7 +6,6 @@
 #include <unistd.h>
 #include  <stdio.h>
 #include <string>
-/*#include "BaseFactory.h"*/
 #include "CommandExecute.hpp"
 
 using namespace std;
