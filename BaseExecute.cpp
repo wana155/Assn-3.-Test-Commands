@@ -1,6 +1,5 @@
 
 
-
 #include <stdio.h>
 #include "BaseExecute.h"
 
@@ -54,7 +53,6 @@ void BaseExecute::ComadsEx(int i){
     
 }
 void CoShellExecute::ExecuteC(){
-   
     tmp[0]="sh";
     tmp[1]="-c";
     /* Executes comands in conatiner*/
@@ -65,7 +63,7 @@ void CoShellExecute::ExecuteC(){
 
 
 void TestExecute::ExecuteC(){
-  
+
   
     tmp[0]="sh";
     tmp[1]="-c";
@@ -80,12 +78,15 @@ void TestExecute::ExecuteC(){
             
             if (found!=std::string::npos){
                 tmo.erase(0, (found+5));}
+            if (tmo[tmo.size()-1]==32){
+                tmo.erase(tmo.size()-1,1);
+            }
             if (foundSy!=std::string::npos){
                 tmo.erase((foundSy2-1),2);
                 tmo.erase(0,(foundSy+2));
                 
             }
-
+        bool staa=true;
             if (tmo[1]==101){
                 tmo.erase(0,3);
                 
@@ -98,6 +99,7 @@ void TestExecute::ExecuteC(){
                 }
                 if (status!=0){
                     cout<<"(False)"<<endl;
+                    stas=false;
                 }
             }
             
@@ -116,10 +118,13 @@ void TestExecute::ExecuteC(){
                     if( S_ISREG( buffer.st_mode ) != 0 )
                     {   cout <<"(True) "<<endl;
                         cout<< "This is a File"<<endl;}
-                    else{cout<<"(False)"<<endl;}
+                    else{cout<<"(False)"<<endl;
+                        stas=false;
+                    }
                 }
                 if (status!=0){
                     cout<<"(False)"<<endl;
+                    stas=false;
                 }
             }
             
@@ -137,10 +142,13 @@ void TestExecute::ExecuteC(){
                     if( S_ISREG( buffer.st_mode ) == 0 )
                     {   cout <<"(True) "<<endl;
                         cout<< "This is a Directory"<<endl;}
-                    else{cout<<"(False)"<<endl;}
+                    else{cout<<"(False)"<<endl;
+                        stas=false;
+                    }
                 }
                 if (status!=0){
                     cout<<"(False)"<<endl;
+                    stas=false;
                 }
             }
             
@@ -151,12 +159,13 @@ void TestExecute::ExecuteC(){
                 
                 status=stat(tmo.c_str(), &buffer);
                 if (status==0){
-                    cout <<"(True) "<<endl;}
+                    cout <<"(True) "<<endl;
+                }
                 
                 if (status!=0){
                     cout<<"(False)"<<endl;
+                    stas=false;
                 }}
         }
         else{this->ComadsEx(l);}
         }}
-
